@@ -123,11 +123,7 @@ class DoublyLinkedList:
     the node was the head or the tail"""
     def delete(self, node):
         # if list is empty
-        if self.head == None:
-            self.head = None
-            self.tail = None
-        # if list is one
-        elif self.length == 1:
+        if (self.head == None) or (self.length == 1):
             self.head = None
             self.tail = None
         # else if node is head
@@ -186,10 +182,4 @@ if __name__ == "__main__":
         print(f"values: {curr_head.value}")
         curr_head = curr_head.next
 
-    # dll.delete(dll.head)
-
-    # curr_head = dll.head
-    # while curr_head is not None:
-    #     print(f"values: {curr_head.value}")
-    #     curr_head = curr_head.next
     print(f"length: {dll.length}")
