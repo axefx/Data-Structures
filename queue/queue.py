@@ -27,7 +27,7 @@ class Queue:
 
     def dequeue(self):
         if self.size == 0:
-            raise RuntimeError("empty queue")
+            return None
         self.size-=1
         return self.storage.pop(0)
 
@@ -46,8 +46,9 @@ if __name__ == "__main__":
     
 
     print("----------"*8)
-
-from ..singly_linked_list.singly_linked_list import LinkedList
+import sys
+sys.path.append('./singly_linked_list')
+from singly_linked_list import LinkedList
 
 class Queue2:
     def __init__(self):
@@ -63,7 +64,7 @@ class Queue2:
 
     def dequeue(self):
         if self.size == 0:
-            raise RuntimeError("empty queue")
+            return None
         self.size-=1
         return self.storage.remove_head()
 
@@ -84,7 +85,8 @@ if __name__ == "__main__":
     print("----------"*8)
 
 ## stretch
-from ..stack.stack import Stack
+sys.path.append("./stack")
+from stack import Stack
 
 class Queue3:
     def __init__(self):

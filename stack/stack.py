@@ -24,7 +24,7 @@ class Stack:
 
     def pop(self):
         if self.size == 0:
-            raise RuntimeError("empty stack")
+            return None
         last_in = self.size - 1
         last_item = self.storage[last_in]
         del self.storage[last_in]
@@ -57,7 +57,9 @@ if __name__ == "__main__":
 
     print("----------"*8)
 
-from ..singly_linked_list.singly_linked_list import LinkedList
+import sys
+sys.path.append('./singly_linked_list')
+from singly_linked_list import LinkedList
 
 class Stack2:
     def __init__(self):
