@@ -9,6 +9,7 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+from collections import deque
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -61,33 +62,62 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        # recur to all the left nodes for the lowest values
+        if node.left:
+            self.in_order_print(node.left)
+        # print values
+        print(node.value)
+        # recur all the right nodes after printing
+        # their values in order from low to high
+        if node.right:
+            self.in_order_print(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        q = deque()
+        q.append(node)
+        while len(q) > 0:
+            current = q.popleft()
+            if current.left:
+                q.append(current.left)
+            if current.right:
+                q.append(current.right)
+            print(current.value)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        print(node.value)
+        if node.left:
+            node.dft_print(node.left)
+        if node.right:
+            node.dft_print(node.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
-        pass
+        print(node.value)
+        if node.left:
+            node.dft_print(node.left)
+        if node.right:
+            node.dft_print(node.right)
 
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
-
 if __name__ == "__main__":
-    bst = BSTNode(5)
-    bst.insert(2)
-    bst.insert(3)
+    bst = BSTNode(1)
+    bst.insert(8)
+    bst.insert(5)
     bst.insert(7)
-    print("checking...4")
-    print(bst.contains(4))
+    bst.insert(6)
+    bst.insert(3)
+    bst.insert(4)
+    bst.insert(2)
+
+    # bst.in_order_print(bst)
+    # bst.bft_print(bst)
+    bst.dft_print(bst)
